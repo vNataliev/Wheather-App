@@ -1,0 +1,788 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.40.0 -->
+<interface>
+  <requires lib="gtk+" version="3.24"/>
+  <object class="GtkDialog" id="infodialog">
+    <property name="width-request">0</property>
+    <property name="can-focus">False</property>
+    <property name="title" translatable="yes">O aplikacji</property>
+    <property name="resizable">False</property>
+    <property name="default-width">600</property>
+    <property name="default-height">300</property>
+    <property name="type-hint">dialog</property>
+    <signal name="delete-event" handler="infoOkClicked" swapped="no"/>
+    <child internal-child="vbox">
+      <object class="GtkBox">
+        <property name="can-focus">False</property>
+        <property name="margin-left">5</property>
+        <property name="margin-right">5</property>
+        <property name="margin-top">5</property>
+        <property name="margin-bottom">5</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <property name="baseline-position">bottom</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox">
+            <property name="can-focus">False</property>
+            <property name="layout-style">end</property>
+            <child>
+              <object class="GtkButton" id="okbutton">
+                <property name="label" translatable="yes">OK</property>
+                <property name="name">textBlack</property>
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+                <signal name="clicked" handler="infoOkClicked" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">Prognoza Pogody
+
+Jest to aplikacja okienkowa z interfejsem graficznym, która umożliwia sprawdzenie prognozy pogody 
+na kolejne siedem dni. Możliwe jest wyszukanie, a następnie wybór z listy miejscowośći, która interesuje
+użytkownika. Po nakliknięciu pojawi się nazwa miejscowości w prawym górnym rogu wraz z aktualnym 
+czasem. Poniżej wyświetlana jest prognoza pogody dla każdego dnia w formie kafelków z intuicyjnie 
+dobraną grafiką. Każdy kafelek umożliwia sprawdzenie temperatury dla odpowiedniej godziny za pomocą
+ scrolla. Możliwe jest również przesuwanie się między dniami za pomocą strzałek. Aplikacja 
+pozwala także na korzystanie z trybu ciemnego.
+
+Autor: Natalia Brzózka</property>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkImage" id="leftimage">
+    <property name="width-request">20</property>
+    <property name="height-request">20</property>
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="pixbuf">dark_icons\arrow_circle_left.png</property>
+  </object>
+  <object class="GtkImage" id="rightimage">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="pixbuf">dark_icons\arrow_circle_right.png</property>
+  </object>
+  <object class="GtkImage" id="search">
+    <property name="width-request">10</property>
+    <property name="height-request">10</property>
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="pixbuf">dark_icons\search.png</property>
+  </object>
+  <object class="GtkImage" id="searchimage2">
+    <property name="width-request">20</property>
+    <property name="height-request">20</property>
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="pixbuf">dark_icons\search.png</property>
+  </object>
+  <object class="GtkImage" id="searchimage3">
+    <property name="width-request">20</property>
+    <property name="height-request">20</property>
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="pixbuf">dark_icons\search.png</property>
+  </object>
+  <object class="GtkImage" id="toggleimage1">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="pixbuf">dark_icons\toggle_off.png</property>
+  </object>
+  <object class="GtkWindow" id="main_window">
+    <property name="can-focus">False</property>
+    <property name="title" translatable="yes">Prognoza pogody</property>
+    <property name="resizable">False</property>
+    <property name="default-width">850</property>
+    <property name="default-height">600</property>
+    <property name="icon">dark_icons\icon.png</property>
+    <signal name="destroy" handler="onDestroy" swapped="no"/>
+    <child>
+      <object class="GtkFixed" id="fixed1">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <child>
+          <object class="GtkButton" id="searchbutton1">
+            <property name="width-request">10</property>
+            <property name="height-request">10</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <property name="image">search</property>
+            <signal name="clicked" handler="searchCitiesMain" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">640</property>
+            <property name="y">256</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="search1">
+            <property name="width-request">500</property>
+            <property name="height-request">48</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+          </object>
+          <packing>
+            <property name="x">142</property>
+            <property name="y">257</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="Info1">
+            <property name="label" translatable="yes">Info</property>
+            <property name="width-request">50</property>
+            <property name="height-request">30</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <property name="relief">none</property>
+            <signal name="clicked" handler="infoButtonClicked" swapped="no"/>
+            <signal name="destroy" handler="infoOkClicked" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">6</property>
+            <property name="y">6</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="text1">
+            <property name="width-request">240</property>
+            <property name="height-request">80</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">Prognoza pogody</property>
+            <attributes>
+              <attribute name="scale" value="2"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">309</property>
+            <property name="y">184</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkImage" id="darkmode1">
+            <property name="width-request">100</property>
+            <property name="height-request">80</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="pixbuf">dark_icons\dark_mode.png</property>
+          </object>
+          <packing>
+            <property name="x">364</property>
+            <property name="y">293</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="togglebutton1">
+            <property name="width-request">52</property>
+            <property name="height-request">50</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="receives-default">True</property>
+            <property name="image">toggleimage1</property>
+            <property name="relief">none</property>
+            <signal name="clicked" handler="darkMode" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">430</property>
+            <property name="y">307</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkImage" id="toggleimage2">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="pixbuf">dark_icons\toggle_off.png</property>
+  </object>
+  <object class="GtkWindow" id="search_window">
+    <property name="can-focus">False</property>
+    <property name="title" translatable="yes">Prognoza pogody</property>
+    <property name="resizable">False</property>
+    <property name="default-width">850</property>
+    <property name="default-height">600</property>
+    <signal name="destroy" handler="onDestroy" swapped="no"/>
+    <child>
+      <object class="GtkFixed" id="fixed2">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <child>
+          <object class="GtkButton" id="Info2">
+            <property name="label" translatable="yes">Info</property>
+            <property name="width-request">50</property>
+            <property name="height-request">30</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <property name="relief">none</property>
+            <signal name="clicked" handler="infoButtonClicked" swapped="no"/>
+            <signal name="destroy" handler="infoOkClicked" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">5</property>
+            <property name="y">6</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkListBox" id="searchList">
+            <property name="name">listbox</property>
+            <property name="width-request">786</property>
+            <property name="height-request">336</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <signal name="row-selected" handler="chooseCity" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">35</property>
+            <property name="y">198</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="text2">
+            <property name="width-request">240</property>
+            <property name="height-request">80</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">Prognoza pogody</property>
+            <attributes>
+              <attribute name="scale" value="2"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">33</property>
+            <property name="y">17</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="searchbutton2">
+            <property name="width-request">20</property>
+            <property name="height-request">20</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <property name="image">searchimage2</property>
+            <signal name="clicked" handler="searchCitiesSearch" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">383</property>
+            <property name="y">78</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="search2">
+            <property name="width-request">350</property>
+            <property name="height-request">48</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+          </object>
+          <packing>
+            <property name="x">35</property>
+            <property name="y">79</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkImage" id="darkmode2">
+            <property name="width-request">100</property>
+            <property name="height-request">80</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="pixbuf">dark_icons\dark_mode.png</property>
+          </object>
+          <packing>
+            <property name="x">12</property>
+            <property name="y">115</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="togglebutton2">
+            <property name="width-request">20</property>
+            <property name="height-request">20</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="focus-on-click">False</property>
+            <property name="receives-default">True</property>
+            <property name="image">toggleimage2</property>
+            <property name="relief">none</property>
+            <signal name="clicked" handler="darkMode" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">79</property>
+            <property name="y">127</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkImage" id="toggleimage3">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="pixbuf">dark_icons\toggle_off.png</property>
+  </object>
+  <object class="GtkWindow" id="weather_window">
+    <property name="can-focus">False</property>
+    <property name="title" translatable="yes">Prognoza pogody</property>
+    <property name="resizable">False</property>
+    <property name="default-width">850</property>
+    <property name="default-height">600</property>
+    <signal name="destroy" handler="onDestroy" swapped="no"/>
+    <child>
+      <object class="GtkFixed" id="fixed3">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <child>
+          <object class="GtkButton" id="infobutton3">
+            <property name="label" translatable="yes">Info</property>
+            <property name="width-request">50</property>
+            <property name="height-request">30</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <property name="relief">none</property>
+            <signal name="clicked" handler="infoButtonClicked" swapped="no"/>
+            <signal name="destroy" handler="infoOkClicked" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">6</property>
+            <property name="y">6</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="search3">
+            <property name="width-request">350</property>
+            <property name="height-request">48</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+          </object>
+          <packing>
+            <property name="x">35</property>
+            <property name="y">79</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="leftbutton">
+            <property name="width-request">30</property>
+            <property name="height-request">30</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <property name="image">leftimage</property>
+            <property name="relief">none</property>
+            <signal name="clicked" handler="leftClick" swapped="no"/>
+          </object>
+          <packing>
+            <property name="y">320</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="rightbutton">
+            <property name="width-request">30</property>
+            <property name="height-request">30</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <property name="image">rightimage</property>
+            <property name="relief">none</property>
+            <signal name="clicked" handler="rightClick" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">833</property>
+            <property name="y">320</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="text3">
+            <property name="width-request">240</property>
+            <property name="height-request">80</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">Prognoza pogody</property>
+            <attributes>
+              <attribute name="scale" value="2"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">36</property>
+            <property name="y">15</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkImage" id="darkmode3">
+            <property name="width-request">100</property>
+            <property name="height-request">80</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="pixbuf">dark_icons\dark_mode.png</property>
+          </object>
+          <packing>
+            <property name="x">7</property>
+            <property name="y">113</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="togglebutton3">
+            <property name="width-request">30</property>
+            <property name="height-request">30</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <property name="image">toggleimage3</property>
+            <property name="relief">none</property>
+            <signal name="clicked" handler="darkMode" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">77</property>
+            <property name="y">127</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="searchbutton3">
+            <property name="width-request">30</property>
+            <property name="height-request">30</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <property name="image">searchimage3</property>
+            <signal name="clicked" handler="searchCitiesWeather" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">384</property>
+            <property name="y">78</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkImage" id="locationimage">
+            <property name="width-request">100</property>
+            <property name="height-request">80</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="pixbuf">dark_icons\location_on.png</property>
+          </object>
+          <packing>
+            <property name="x">785</property>
+            <property name="y">29</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="citytext">
+            <property name="width-request">370</property>
+            <property name="height-request">80</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">Gdańsk</property>
+            <property name="justify">right</property>
+            <attributes>
+              <attribute name="scale" value="2"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">442</property>
+            <property name="y">35</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="timetext">
+            <property name="width-request">100</property>
+            <property name="height-request">80</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">12:00</property>
+            <attributes>
+              <attribute name="scale" value="2"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">749</property>
+            <property name="y">73</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLayout">
+            <property name="width-request">251</property>
+            <property name="height-request">288</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <child>
+              <object class="GtkImage" id="Image1">
+                <property name="width-request">251</property>
+                <property name="height-request">288</property>
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="stock">gtk-missing-image</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">55</property>
+            <property name="y">183</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLayout">
+            <property name="width-request">251</property>
+            <property name="height-request">288</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <child>
+              <object class="GtkImage" id="Image2">
+                <property name="name">Image2</property>
+                <property name="width-request">251</property>
+                <property name="height-request">288</property>
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="stock">gtk-missing-image</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">315</property>
+            <property name="y">183</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLayout">
+            <property name="width-request">251</property>
+            <property name="height-request">288</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <child>
+              <object class="GtkImage" id="Image3">
+                <property name="name">Image3</property>
+                <property name="width-request">251</property>
+                <property name="height-request">288</property>
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="stock">gtk-missing-image</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">576</property>
+            <property name="y">183</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="day1">
+            <property name="name">textBlack</property>
+            <property name="width-request">100</property>
+            <property name="height-request">80</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">day1</property>
+            <attributes>
+              <attribute name="scale" value="2"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">62</property>
+            <property name="y">174</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="day2">
+            <property name="name">textBlack</property>
+            <property name="width-request">100</property>
+            <property name="height-request">80</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">day2</property>
+            <attributes>
+              <attribute name="scale" value="2"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">318</property>
+            <property name="y">174</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="day3">
+            <property name="name">textBlack</property>
+            <property name="width-request">100</property>
+            <property name="height-request">80</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">day3</property>
+            <attributes>
+              <attribute name="scale" value="2"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">579</property>
+            <property name="y">174</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="temp1">
+            <property name="name">textBlack</property>
+            <property name="width-request">100</property>
+            <property name="height-request">80</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">temp1</property>
+            <attributes>
+              <attribute name="scale" value="2"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">60</property>
+            <property name="y">215</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="temp2">
+            <property name="name">textBlack</property>
+            <property name="width-request">100</property>
+            <property name="height-request">80</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">temp2</property>
+            <attributes>
+              <attribute name="scale" value="2"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">316</property>
+            <property name="y">215</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="temp3">
+            <property name="name">textBlack</property>
+            <property name="width-request">100</property>
+            <property name="height-request">80</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">temp3</property>
+            <attributes>
+              <attribute name="scale" value="2"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">577</property>
+            <property name="y">215</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScrolledWindow">
+            <property name="name">textBlack1</property>
+            <property name="width-request">252</property>
+            <property name="height-request">92</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="hscrollbar-policy">always</property>
+            <property name="vscrollbar-policy">never</property>
+            <property name="shadow-type">in</property>
+            <child>
+              <object class="GtkViewport">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <child>
+                  <object class="GtkBox" id="box1">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="spacing">12</property>
+                    <child>
+                      <placeholder/>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">54</property>
+            <property name="y">470</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScrolledWindow">
+            <property name="name">textBlack1</property>
+            <property name="width-request">252</property>
+            <property name="height-request">92</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="hscrollbar-policy">always</property>
+            <property name="vscrollbar-policy">never</property>
+            <property name="shadow-type">in</property>
+            <child>
+              <object class="GtkViewport">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <child>
+                  <object class="GtkBox" id="box2">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="spacing">12</property>
+                    <child>
+                      <placeholder/>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">314</property>
+            <property name="y">470</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScrolledWindow">
+            <property name="name">textBlack1</property>
+            <property name="width-request">252</property>
+            <property name="height-request">92</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="hscrollbar-policy">always</property>
+            <property name="vscrollbar-policy">never</property>
+            <property name="shadow-type">in</property>
+            <child>
+              <object class="GtkViewport">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <child>
+                  <object class="GtkBox" id="box3">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="spacing">12</property>
+                    <child>
+                      <placeholder/>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">576</property>
+            <property name="y">470</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
